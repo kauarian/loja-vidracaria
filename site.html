@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mineiro Vidros - Soluções em Vidro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 2rem;
+            }
+        }
+
+        /* Header */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text h1 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 0;
+        }
+
+        .logo-text p {
+            font-size: 0.75rem;
+            color: #0066cc;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        nav {
+            display: none;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            nav {
+                display: flex;
+            }
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            color: #1a1a1a;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav button:hover {
+            color: #0066cc;
+        }
+
+        .cta-button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .cta-button {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+        }
+
+        .cta-button:hover {
+            background-color: #0052a3;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.1) 0%, #ffffff 100%);
+            padding: 5rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .hero {
+                padding: 8rem 0;
+            }
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .hero-text h2 {
+            font-size: 2.25rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        @media (min-width: 768px) {
+            .hero-text h2 {
+                font-size: 3rem;
+            }
+        }
+
+        .hero-text p {
+            font-size: 1.125rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .hero-buttons {
+                flex-direction: row;
+            }
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-size: 1.125rem;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: #0066cc;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0052a3;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #0066cc;
+            border: 2px solid #0066cc;
+        }
+
+        .btn-secondary:hover {
+            background-color: #f0f6ff;
+        }
+
+        .hero-image {
+            position: relative;
+            height: 400px;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Sobre Section */
+        .sobre {
+            padding: 5rem 0;
+            background-color: #ffffff;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 2.25rem;
+            }
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #6b7280;
+            font-size: 1.125rem;
+            max-width: 42rem;
+            margin: 0 auto 4rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: box-shadow 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-icon {
+            width: 4rem;
+            height: 4rem;
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: #6b7280;
+        }
+
+        /* Serviços Section */
+        .servicos {
+            padding: 5rem 0;
+            background-color: rgba(0, 102, 204, 0.05);
+        }
+
+        .servicos-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .servicos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .servicos-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .servico-card {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            transition: box-shadow 0.3s;
+        }
+
+        .servico-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .servico-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .servico-card p {
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        .link-button {
+            color: #0066cc;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .link-button:hover {
+            color: #0052a3;
+        }
+
+        /* Produtos Section */
+        .produtos {
+            padding: 5rem 0;
+            background-color: #ffffff;
+        }
+
+        .galeria {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .galeria {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .galeria {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .galeria-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            aspect-ratio: 1;
+        }
+
+        .galeria-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .galeria-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .galeria-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+            padding: 1rem;
+            display: flex;
+            align-items: flex-end;
+            height: 100%;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Contato Section */
+        .contato {
+            padding: 5rem 0;
+            background-color: rgba(0, 102, 204, 0.05);
+        }
+
+        .contato-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .contato-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .contato-card {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: box-shadow 0.3s;
+        }
+
+        .contato-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .contato-card h3 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .contato-card p {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .contato-button {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a1a1a 100%);
+            color: #ffffff;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section button {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            text-align: left;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+
+        .footer-section button:hover {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsivo */
+        @media (max-width: 640px) {
+            .hero-buttons {
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .logo-img {
+                height: 50px;
+            }
+
+            .logo-text h1 {
+                font-size: 1rem;
+            }
+
+            .logo-text p {
+                font-size: 0.65rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='goldGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23d4af37;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23f4d03f;stop-opacity:1' /%3E%3C/linearGradient%3E%3ClinearGradient id='blueGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23003d82;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%230066cc;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Cpolygon points='100,30 140,80 120,80 140,130 100,160 60,130 80,80 60,80' fill='url(%23goldGrad)'/%3E%3Cpolygon points='100,90 130,130 100,150 70,130' fill='url(%23blueGrad)'/%3E%3C/svg%3E" alt="Mineiro Vidros" class="logo-img">
+                    <div class="logo-text">
+                        <h1>MINEIRO VIDROS</h1>
+                        <p>VIDRAÇARIA PERSONALIZADA</p>
+                    </div>
+                </div>
+                <nav>
+                    <button onclick="scrollToSection('home')">Início</button>
+                    <button onclick="scrollToSection('sobre')">Sobre</button>
+                    <button onclick="scrollToSection('servicos')">Serviços</button>
+                    <button onclick="scrollToSection('produtos')">Produtos</button>
+                    <button onclick="scrollToSection('contato')">Contato</button>
+                </nav>
+                <button class="cta-button" onclick="handleWhatsApp()">
+                    📞 Entre em Contato
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Soluções em Vidros com Qualidade e Segurança</h2>
+                    <p>Especialistas em vidros temperados, laminados e espelhos para projetos residenciais e comerciais. Atendimento personalizado e instalação profissional.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="handleWhatsApp()">Solicitar Orçamento</button>
+                        <button class="btn btn-secondary" onclick="scrollToSection('produtos')">Ver Produtos</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://portalvidrosam.com.br/wp-content/uploads/2022/04/como-precificar-servico.jpg" alt="Fachada moderna com vidros">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Section -->
+    <section id="sobre" class="sobre">
+        <div class="container">
+            <h2 class="section-title">Sobre Nossa Empresa</h2>
+            <p class="section-subtitle">Com anos de experiência no mercado, somos referência em soluções completas em vidros. Nossa equipe especializada garante produtos de alta qualidade e serviços impecáveis.</p>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">✓</div>
+                    <h3>Qualidade Garantida</h3>
+                    <p>Trabalhamos apenas com vidros certificados e de fornecedores confiáveis</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">✓</div>
+                    <h3>Equipe Especializada</h3>
+                    <p>Profissionais capacitados e experientes em instalação e manutenção</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">✓</div>
+                    <h3>Atendimento Personalizado</h3>
+                    <p>Projetos customizados de acordo com suas necessidades específicas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços Section -->
+    <section id="servicos" class="servicos">
+        <div class="container">
+            <h2 class="section-title">Nossos Serviços</h2>
+            <p class="section-subtitle">Oferecemos uma ampla gama de serviços para atender todas as suas necessidades em vidros</p>
+            
+            <div class="servicos-grid">
+                <div class="servico-card">
+                    <h3>Vidros Temperados</h3>
+                    <p>Vidros de alta resistência para box, portas, janelas e fachadas</p>
+                    <button class="link-button" onclick="handleWhatsApp()">Solicitar orçamento →</button>
+                </div>
+                <div class="servico-card">
+                    <h3>Vidros Laminados</h3>
+                    <p>Segurança máxima com vidros laminados para guarda-corpos e coberturas</p>
+                    <button class="link-button" onclick="handleWhatsApp()">Solicitar orçamento →</button>
+                </div>
+                <div class="servico-card">
+                    <h3>Espelhos</h3>
+                    <p>Espelhos sob medida para banheiros, academias e ambientes comerciais</p>
+                    <button class="link-button" onclick="handleWhatsApp()">Solicitar orçamento →</button>
+                </div>
+                <div class="servico-card">
+                    <h3>Box para Banheiro</h3>
+                    <p>Instalação completa de box com diversos modelos e acabamentos</p>
+                    <button class="link-button" onclick="handleWhatsApp()">Solicitar orçamento →</button>
+                </div>
+                <div class="servico-card">
+                    <h3>Portas e Janelas</h3>
+                    <p>Portas de vidro temperado e janelas com perfis de alumínio</p>
+                    <button class="link-button" onclick="handleWhatsApp()">Solicitar orçamento →</button>
+                </div>
+                <div class="servico-card">
+                    <h3>Manutenção</h3>
+                    <p>Serviços de manutenção, reparo e substituição de vidros</p>
+                    <button class="link-button" onclick="handleWhatsApp()">Solicitar orçamento →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produtos Section -->
+    <section id="produtos" class="produtos">
+        <div class="container">
+            <h2 class="section-title">Nossos Produtos</h2>
+            <p class="section-subtitle">Confira alguns de nossos trabalhos e produtos instalados</p>
+            
+            <div class="galeria">
+                <div class="galeria-item" onclick="handleWhatsApp()">
+                    <img src="https://videvidros.com.br/wp-content/uploads/2022/01/img_background_home_servicos_vidros_temperados.jpg" alt="Vidros Temperados">
+                    <div class="galeria-overlay">Vidros Temperados</div>
+                </div>
+                <div class="galeria-item" onclick="handleWhatsApp()">
+                    <img src="https://esquadrias.aaxesquadrias.com.br/esquadria/imagens/fachadas-pele-de-vidro-fachada-pele-de-vidro-residencial.jpg" alt="Fachadas">
+                    <div class="galeria-overlay">Fachadas</div>
+                </div>
+                <div class="galeria-item" onclick="handleWhatsApp()">
+                    <img src="https://images.tcdn.com.br/img/img_prod/1119261/vitro_de_correr_4_folhas_vidro_liso_linha_normatizada_aluminio_brilhante_1247_2_dc543250fefba266521c70e7ba6abecc.jpg" alt="Janelas">
+                    <div class="galeria-overlay">Janelas</div>
+                </div>
+                <div class="galeria-item" onclick="handleWhatsApp()">
+                    <img src="https://i.pinimg.com/236x/42/b9/6d/42b96d0b0e13eaad22fec3ac4b94977c.jpg" alt="Projetos Especiais">
+                    <div class="galeria-overlay">Projetos Especiais</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato Section -->
+    <section id="contato" class="contato">
+        <div class="container">
+            <h2 class="section-title">Entre em Contato</h2>
+            <p class="section-subtitle">Solicite um orçamento sem compromisso ou tire suas dúvidas com nossa equipe</p>
+            
+            <div class="contato-cards">
+                <div class="contato-card" onclick="handlePhone()">
+                    <div class="card-icon">📞</div>
+                    <h3>Telefone</h3>
+                    <p>(11) 9999-9999</p>
+                    <p>(11) 3333-3333</p>
+                </div>
+                <div class="contato-card" onclick="handleEmail('contato@mineirovidr os.com.br')">
+                    <div class="card-icon">✉️</div>
+                    <h3>E-mail</h3>
+                    <p>contato@mineirovidros.com.br</p>
+                    <p>vendas@mineirovidros.com.br</p>
+                </div>
+                <div class="contato-card">
+                    <div class="card-icon">📍</div>
+                    <h3>Endereço</h3>
+                    <p>Av. das palmeiras, 123</p>
+                    <p>São Paulo Cajamar - SP</p>
+                </div>
+            </div>
+            
+            <div class="contato-button">
+                <button class="btn btn-primary" onclick="handleWhatsApp()">
+                    📞 Solicitar Orçamento Agora
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Mineiro Vidros</h3>
+                    <p>Soluções completas em vidros para seu projeto com qualidade e segurança garantidas.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 style="font-weight: 600; margin-bottom: 1rem;">Links Rápidos</h4>
+                    <ul>
+                        <li><button onclick="scrollToSection('home')">Início</button></li>
+                        <li><button onclick="scrollToSection('sobre')">Sobre</button></li>
+                        <li><button onclick="scrollToSection('servicos')">Serviços</button></li>
+                        <li><button onclick="scrollToSection('produtos')">Produtos</button></li>
+                        <li><button onclick="scrollToSection('contato')">Contato</button></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 style="font-weight: 600; margin-bottom: 1rem;">Horário de Atendimento</h4>
+                    <p>Segunda a Sexta: 8h às 18h</p>
+                    <p>Sábado: 8h às 13h</p>
+                    <p>Domingo: Fechado</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mineiro Vidros. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Função para scroll suave
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Função para WhatsApp
+        function handleWhatsApp() {
+            const whatsappNumber = "5511999999999";
+            const message = encodeURIComponent("Olá! Gostaria de solicitar um orçamento.");
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+        }
+
+        // Função para Email
+        function handleEmail(email) {
+            const subject = encodeURIComponent("Solicitação de Orçamento");
+            const body = encodeURIComponent("Olá,\n\nGostaria de solicitar um orçamento para:\n\n");
+            window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+        }
+
+        // Função para Telefone
+        function handlePhone() {
+            window.location.href = "tel:+5511999999999";
+        }
+    </script>
+</body>
+</html>
